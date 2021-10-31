@@ -1,15 +1,19 @@
 ---
-title:  "Extra functionality for rjd3modelling"
-author: "Mārtiņš Liberts"
+title:  "Extra functionality for `rjd3modelling`"
+author: "Mārtiņš Liberts (Central Statistical Bureau of Latvia)"
 date:   "`r Sys.time()`"
-output: html_document
+output: 
+  pdf_document: 
+    toc: yes
+    number_sections: yes
+    toc_depth: 4
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Holidays in Latvia
+# Holidays in Latvia
 
 There are specific holidays in Latvia which are not possible to describe with `rjd3modelling` functions currently. The following extra functionality would be necessary.
 
@@ -63,7 +67,7 @@ There have been four cases so far when November 18 has been compensated with an 
 - 2018-11-19
 
 
-### Implementation in rjd3modelling
+### Implementation in `rjd3modelling`
 
 Extra arguments for the function `calendar.fixedday` would be necessary to implement the compensation mechanism from the user interface. Two extra arguments for the function `calendar.fixedday` similar to arguments from the function `holidays` would be necessary:
 
@@ -139,13 +143,24 @@ calendar.fixedday(
 
 ## A holiday once in five years
 
-We have a very recent holiday which will take place only once in a five years. General Latvian Song and Dance Celebration happens **once in 5 years**. The closing day of the celebration is a holiday since 2018. Traditionally the the closing day of the celebration is on the Sunday of the first week of July. To make it more complicated - this is another holiday with a compensation. The next working day is also a holiday. So there are two holidays - the Sunday of the 1st week of July and the Monday of the 2nd week of July.
+We have a very recent holiday which will take place only once in a five years. General Latvian Song and Dance Celebration happens **once in 5 years**. The closing day of the celebration is a holiday since 2018. Traditionally the the closing day of the celebration is on Sunday of the first week of July. To make it more complicated - this is another holiday with a compensation. The next working day is also a holiday. So there are two holidays - Sunday of the 1st week of July and Monday of the 2nd week of July.
 
 It has been a holiday only once so far. The July 8 (Sunday) and 9 (Monday) in 2018 were holidays for the first time because of the General Latvian Song and Dance Celebration. The next celebration will be in 2023. So, July 9 and 10 on 2023 should be holidays.
 
-The 5 years cycle of the General Latvian Song and Dance Celebration is defined by the law. The date of the closing day is not defined by the law. So, it can happen that other date of the closing day is chosen. It has been almost always on the Sunday of the 1st week of July since 1993. However, there was one exception. The closing day of the celebration in 2008 was on the Saturday of the 2nd week of July (it was 2008-07-12). We will not be able to model it as a continuous holiday if the tradition will be broken once again.
+The 5 years cycle of the General Latvian Song and Dance Celebration is defined by the law. The date of the closing day is not defined by the law. So, it can happen that other date of the closing day is chosen. It has been almost always on Sunday of the 1st week of July since 1993. However, there was one exception. The closing day of the celebration in 2008 was on Saturday of the 2nd week of July (it was 2008-07-12). We will not be able to model it as a continuous holiday if the tradition will be broken once again.
 
-### Implementation in rjd3modelling
+The list closing days of the General Latvian Song and Dance Celebration since 1993:
+
+- 1993-07-04
+- 1998-07-05
+- 2003-07-06
+- 2008-07-12 (the exception - it was on Saturday of the 2nd week of July)
+- 2013-07-07
+- 2018-07-08
+- _2023-07-09_ (this is assumption, it has not been defined yet)
+
+
+### Implementation in `rjd3modelling`
 
 Extra arguments for the function `calendar.fixedweekday` would be necessary to implement this holiday with a compensation mechanism from the user interface. Three extra arguments for the function `calendar.fixedweekday` would be necessary:
 

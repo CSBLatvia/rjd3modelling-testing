@@ -1,0 +1,1 @@
+This is a repository for the testing of the R package [`rjd3modelling`](https://github.com/palatej/rjd3modelling). The testing is done in the scope of the project [Centre of Excellence on Statistical Methods and Tools](https://ec.europa.eu/eurostat/cros/content/about-project_en).
